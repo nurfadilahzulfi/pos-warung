@@ -1,0 +1,25 @@
+-- CreateTable
+CREATE TABLE "Produk" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "nama" TEXT NOT NULL,
+    "harga" INTEGER NOT NULL,
+    "stok" INTEGER NOT NULL,
+    "kategoriId" INTEGER,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT "Produk_kategoriId_fkey" FOREIGN KEY ("kategoriId") REFERENCES "Kategori" ("id") ON DELETE SET NULL ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "Kategori" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "nama" TEXT NOT NULL
+);
+
+-- CreateTable
+CREATE TABLE "Transaksi" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "total" INTEGER NOT NULL,
+    "bayar" INTEGER NOT NULL,
+    "kembalian" INTEGER NOT NULL,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
